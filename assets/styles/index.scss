@@ -1,1 +1,18 @@
 @import '~bootstrap/scss/bootstrap';
+
+input {
+  margin-bottom: 5px;
+}
+
+.initial-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 70vh;
+}
+
+#sign-in {
+  width: 300px;
+}
