@@ -1,10 +1,14 @@
 @import '~bootstrap/scss/bootstrap';
 
+form {
+  margin-bottom: 10px;
+}
+
 input {
   margin-bottom: 5px;
 }
 
-.initial-form {
+.initial-forms {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,6 +17,10 @@ input {
   min-height: 70vh;
 }
 
-#sign-in {
+#sign-in, #sign-up{
   width: 300px;
+}
+
+#message {
+  text-align: center;
 }
