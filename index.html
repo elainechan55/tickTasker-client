@@ -29,7 +29,7 @@
                 <button type="submit" class="btn btn-primary">Change Password</button>
               </form>
             <!-- <a class="dropdown-item">View Household</a> -->
-            <a class="dropdown-item" id="sign-out">Sign Out</a>
+            <button class="dropdown-item" id="sign-out">Sign Out</button>
           </div>
         </div>
       </header>
@@ -57,19 +57,22 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title">Please sign up</h5>
+                  <p id="sign-up-message"></p>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div class="modal-body">
-                  <input name="credentials[email]" type="email" class="form-control" placeholder="Email address" required>
-                  <input name="credentials[password]" type="password" class="form-control" placeholder="Password" required>
-                  <input name="credentials[password_confirmation]" type="password" class="form-control" placeholder="Confirm password" required>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button id="sign-up" type="submit" class="btn btn-primary">Sign up</button>
-                </div>
+                <form id="sign-up">
+                  <div class="modal-body">
+                    <input name="credentials[email]" type="email" class="form-control" placeholder="Email address" required>
+                    <input name="credentials[password]" type="password" class="form-control" placeholder="Password" required>
+                    <input name="credentials[password_confirmation]" type="password" class="form-control" placeholder="Confirm password" required>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Sign up</button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>

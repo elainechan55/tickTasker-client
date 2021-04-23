@@ -12,5 +12,7 @@ $(() => {
   $('#settings').css('visibility', 'hidden')
   $('#sign-up').on('submit', authEvents.onSignUp)
   $('#sign-in').on('submit', authEvents.onSignIn)
-  // $()
+  $('.menu-change-password').on('click', authEvents.onChangePasswordClick)
+  $('#change-password').on('submit', authEvents.onChangePassword)
+  $('#sign-out').on('click', authEvents.onSignOut)
 })

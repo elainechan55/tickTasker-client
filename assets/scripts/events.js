@@ -13,7 +13,7 @@ const onSignUp = function (event) {
 
   api.signUp(formData)
     .then(ui.onSignUpSuccess)
-    .catch(ui.onError)
+    .catch(ui.onSignUpError)
 }
 
 const onSignIn = function (event) {
@@ -27,7 +27,34 @@ const onSignIn = function (event) {
     .catch(ui.onError)
 }
 
+const onChangePasswordClick = function (event) {
+  event.stopPropagation()
+  ui.onChangePasswordClick()
+}
+
+const onChangePassword = function (event) {
+  event.preventDefault()
+
+  const form = event.target
+  const formData = getFormFields(form)
+
+  api.changePassword(formData)
+    .then(ui.onChangePasswordSuccess)
+    .catch(ui.onError)
+}
+
+const onSignOut = function (event) {
+  event.preventDefault()
+
+  api.signOut()
+    .then(ui.onSignOutSuccess)
+    .catch(ui.onError)
+}
+
 module.exports = {
   onSignUp,
-  onSignIn
+  onSignIn,
+  onChangePasswordClick,
+  onChangePassword,
+  onSignOut
 }
