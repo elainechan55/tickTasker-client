@@ -46,7 +46,7 @@ STRETCH GOALS:
 - Javascript
 
 ### Wireframes
-![TickTasker Wireframe](/public/tickTaskerWireframe.jpg)
+![TickTasker Wireframe](/assets/images/tickTaskerWireframe.jpg)
 
 ### Entity Relationship Diagram
-![TickTasker Entity Relationship Diagram](/public/tickTaskerERD.jpg)
+![TickTasker Entity Relationship Diagram](/assets/images/tickTaskerERD.jpg)
