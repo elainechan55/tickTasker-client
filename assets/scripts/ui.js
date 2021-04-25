@@ -2,6 +2,7 @@
 
 const store = require('./store')
 
+// UI for authentication events (Sign-up, sign-in, change pw, sign-out)
 const onSignUpSuccess = function () {
   console.log('Sign up successful!')
   // $('#sign-up-message').text('Sign up successful!')
@@ -22,7 +23,7 @@ const onSignInSuccess = function (response) {
   showAndFadeMessageOn($('#message'), 'Sign in successful!')
   $('#sign-in').trigger('reset')
   $('.initial-forms').hide()
-  $('#create-task').show()
+  $('#create-task-button').show()
   $('#settings').css('visibility', 'visible')
   $('#new-game').show()
   $('#sign-out').show()
@@ -48,11 +49,19 @@ const onSignOutSuccess = function () {
   $('#settings').css('visibility', 'hidden')
 }
 
+// UI for task events (create task, read (SHOW) task, update task, delete task)
+const onCreateTaskSuccess = function () {
+  console.log('Task created successfully!')
+  showAndFadeMessageOn($('#message'), 'Task created successfully!')
+}
+
+// UI for error
 const onError = function (response) {
   console.log('there was an error')
   $('#message').text('There was an error, please try again.')
 }
 
+// local functions
 function showAndFadeMessageOn (jQueryObject, message) {
   jQueryObject.text(message)
   jQueryObject.show()
@@ -66,5 +75,6 @@ module.exports = {
   onChangePasswordClick,
   onChangePasswordSuccess,
   onSignOutSuccess,
+  onCreateTaskSuccess,
   onError
 }
