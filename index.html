@@ -4,6 +4,7 @@
       <title>Tick Tasker</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
+      <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
       <!-- Do not add `link` tags-->
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
@@ -11,79 +12,89 @@
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
+
     <body>
       <header>
-        <div class="dropdown col-md-12 d-flex justify-content-end" id="settings">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Settings
-          </button>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-            <button class="dropdown-item menu-change-password">Change Password</button>
-              <form class="dropdown-menu p-4" id="change-password">
-                <div class="form-group">
-                  <input name="passwords[old]" type="password" class="form-control" id="oldPassword" placeholder="Enter old password">
+        <nav class="navbar navbar-light" style="background-color: #308247;">
+          <h1 class="h1 mb-1 text-light" id="navbar-title">Tick Tasker</h1>
+          <!-- <div class="dropdown d-flex justify-content-end" id="task-manager">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Task Manager
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+              <button class="dropdown-item" id="create-task">Create a task</button>
+              <button class="dropdown-item" id="view-tasks">View tasks</button>
+              <button class="dropdown-item" id="edit-task">Edit a task</button>
+              <button class="dropdown-item" id="delete-task">Delete a task</button>
+            </div>
+          </div> -->
+          <div class="bs-example">
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary" id="create-task">Create a task</button>
+              <div class="btn-group" id="settings">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Settings
+                </button>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                  <button class="dropdown-item menu-change-password">Change Password</button>
+                    <form class="dropdown-menu dropdown-menu-right p-4" id="change-password">
+                      <div class="form-group">
+                        <input name="passwords[old]" type="password" class="form-control" id="oldPassword" placeholder="Enter old password">
+                      </div>
+                      <div class="form-group">
+                        <input name="passwords[new]" type="password" class="form-control" id="newPassword" placeholder="Enter new password">
+                      </div>
+                      <button type="submit" class="btn btn-primary btn-block">Change Password</button>
+                    </form>
+                  <!-- <a class="dropdown-item">View Household</a> -->
+                  <button class="dropdown-item" id="sign-out">Sign Out</button>
                 </div>
-                <div class="form-group">
-                  <input name="passwords[new]" type="password" class="form-control" id="newPassword" placeholder="Enter new password">
-                </div>
-                <button type="submit" class="btn btn-primary">Change Password</button>
-              </form>
-            <!-- <a class="dropdown-item">View Household</a> -->
-            <button class="dropdown-item" id="sign-out">Sign Out</button>
+              </div>
+            </div>
           </div>
-        </div>
+        </nav>
       </header>
-        <div class>
-          <h1 class="text-center col-md-12" id="title">Tick Tasker</h1>
-        </div>
-        <p id="message"></p>
-        <div class="initial-forms">
-          <form class="form-signin text-center" id="sign-in">
-            <img class="mb-4" src="/assets/images/tickTaskerIcon.jpg" alt="Tick Tasker Icon" width="128" height="128">
-            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-            <input name="credentials[email]" type="email" class="form-control" placeholder="Email address" required>
-            <input name="credentials[password]" type="password" class="form-control" placeholder="Password" required>
-            <button class="btn btn-primary btn-block" type="submit">Sign in</button>
-            <div class="mt-3">
-              <div>
-                Not a user?
-                <a href="#" data-toggle="modal" data-target="#modalRegister" class="ml-2">Sign Up</a>
-              </div>
-            </div>
-          </form>
 
-          <div id="modalRegister" class="modal fade" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title">Please sign up</h5>
-                  <p id="sign-up-message"></p>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <form id="sign-up">
-                  <div class="modal-body">
-                    <input name="credentials[email]" type="email" class="form-control" placeholder="Email address" required>
-                    <input name="credentials[password]" type="password" class="form-control" placeholder="Password" required>
-                    <input name="credentials[password_confirmation]" type="password" class="form-control" placeholder="Confirm password" required>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Sign up</button>
-                  </div>
-                </form>
-              </div>
+      <p class="white-text-cork-background" id="message"></p>
+
+      <div class="initial-forms">
+        <form class="form-signin text-center" id="sign-in">
+          <img class="mb-4" src="/assets/images/tickTaskerIcon.png" alt="Tick Tasker Icon" width="300" height="300">
+          <h1 class="h3 mb-3 font-weight-normal white-text-cork-background">Please sign in</h1>
+          <input name="credentials[email]" type="email" class="form-control" placeholder="Email address" required>
+          <input name="credentials[password]" type="password" class="form-control" placeholder="Password" required>
+          <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+          <div class="mt-3">
+            <div class="white-text-cork-background">
+              Not a user?
+              <a href="#" data-toggle="modal" data-target="#modalRegister" class="ml-2 white-text-cork-background">Sign Up</a>
             </div>
           </div>
-
-          <!-- <form class="form-signup text-center" id="sign-up">
-            <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
-            <input name="credentials[email]" type="email" class="form-control" placeholder="Email address" required>
-            <input name="credentials[password]" type="password" class="form-control" placeholder="Password" required>
-            <input name="credentials[password_confirmation]" type="password" class="form-control" placeholder="Confirm password" required>
-            <button class="btn btn-primary btn-block" type="submit">Sign up</button>
-          </form> -->
+        </form>
+        <div id="modalRegister" class="modal fade" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Please sign up</h5>
+                <p id="sign-up-message"></p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <form id="sign-up">
+                <div class="modal-body">
+                  <input name="credentials[email]" type="email" class="form-control" placeholder="Email address" required>
+                  <input name="credentials[password]" type="password" class="form-control" placeholder="Password" required>
+                  <input name="credentials[password_confirmation]" type="password" class="form-control" placeholder="Confirm password" required>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Sign up</button>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
+      </div>
     </body>
 </html>
