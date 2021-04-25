@@ -8,6 +8,10 @@ input {
   margin-bottom: 5px;
 }
 
+body {
+  background-image: url('./assets/images/corkBackground.jpg');
+}
+
 .initial-forms {
   display: flex;
   flex-direction: column;
@@ -15,6 +19,38 @@ input {
   align-items: center;
   text-align: center;
   min-height: 70vh;
+}
+
+.btn-primary {
+  color: white;
+  background-color: #57b570;
+  border-color: #4ea665;
+}
+
+.btn-primary:hover {
+  color: white;
+  background-color: #4c875b;
+  border-color: #3f704b;
+}
+
+.ml-2:hover {
+  color: blue;
+}
+
+.white-text-cork-background {
+  color: white;
+  font-weight: bold;
+  background: rgba(0, 151, 18, 0.4)
+}
+
+#navbar-title {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 5vh;
+  text-shadow: 2px 2px rgba(0, 0, 0, .25);
+}
+
+#change-password {
+  width: 225px;
 }
 
 #sign-in {
