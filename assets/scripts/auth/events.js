@@ -2,6 +2,7 @@
 
 const api = require('./api')
 const ui = require('./../ui')
+const taskEvents = require('./../tasks/events')
 const getFormFields = require('./../../../lib/get-form-fields')
 // const store = require('./store')
 
@@ -24,6 +25,8 @@ const onSignIn = function (event) {
 
   api.signIn(formData)
     .then(ui.onSignInSuccess)
+    // on sign-in, GET/INDEX all tasks
+    .then(taskEvents.onReadTasks)
     .catch(ui.onError)
 }
 
