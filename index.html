@@ -18,17 +18,6 @@
   <header>
     <nav class="navbar navbar-light" style="background-color: #308247;">
       <h1 class="h1 mb-1 text-light" id="navbar-title">Tick Tasker</h1>
-      <!-- <div class="dropdown d-flex justify-content-end" id="task-manager">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Task Manager
-            </button>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-              <button class="dropdown-item" id="create-task">Create a task</button>
-              <button class="dropdown-item" id="view-tasks">View tasks</button>
-              <button class="dropdown-item" id="edit-task">Edit a task</button>
-              <button class="dropdown-item" id="delete-task">Delete a task</button>
-            </div>
-          </div> -->
       <div class="bs-example">
         <div class="btn-group">
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create-task-modal" id="create-task-button">Create a task</button>
@@ -37,17 +26,17 @@
               <div class="modal-content">
                 <form id="create-task-form">
                   <div class="modal-header">
-                    <input name="task[title]" type="text" class="form-control" placeholder="Task Title" required>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <input name="task[title]" type="text" class="form-control" placeholder="Task title" tabindex="1" required autofocus>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" tabindex="5">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
-                    <input name="task[description]" type="text" class="form-control" placeholder="Task description" required>
+                    <input name="task[description]" type="text" class="form-control" placeholder="Task description" tabindex="2" required>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" tabindex="4">Close</button>
+                    <button type="submit" class="btn btn-primary" tabindex="3">Save changes</button>
                   </div>
                 </form>
               </div>
@@ -117,6 +106,10 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="row row-eq-height d-flex justify-content-around" style="margin-left: 15px" id="task-collection">
+    <!-- appended task from response goes in here via jQuery -->
+    <!-- appended updated task from response goes in here via jQuery -->
   </div>
 
 </body>
