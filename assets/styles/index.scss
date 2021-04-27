@@ -12,6 +12,11 @@ body {
   background-image: url('./assets/images/corkBackground.jpg');
 }
 
+input[type=checkbox] {
+    transform: scale(1.5);
+    vertical-align: middle;
+}
+
 .initial-forms {
   display: flex;
   flex-direction: column;
@@ -43,6 +48,22 @@ body {
   background: rgba(0, 151, 18, 0.4)
 }
 
+.task-post-outline-title {
+  font-size: 4vh;
+}
+
+.delete-task-button, .edit-task-button {
+  margin: 5px 3px 0px 3px;
+}
+
+// .task-post-outline-description {
+//   font-size: 25px;
+// }
+
+// .append-task {
+//   margin-left: 15px;
+// }
+
 #navbar-title {
   font-family: 'Patrick Hand', cursive;
   font-size: 5vh;
@@ -60,3 +81,20 @@ body {
 #message {
   text-align: center;
 }
+
+#task-post-outline-read {
+  background-color:	#feff9c;
+  // height: 375px;
+  margin: 15px;
+  padding: 15px;
+}
+
+// @media (min-width: 768px) {
+//   .row-equal {
+//     display: flex;
+//     flex-wrap: wrap;
+//   }
+//   .col-equal {
+//     margin: auto;
+//   }
+// }
