@@ -2,7 +2,7 @@
 
 let apiUrl
 const apiUrls = {
-  production: 'https://tick-tasker.herokuapp.com/',
+  production: 'https://tick-tasker.herokuapp.com',
   development: 'http://localhost:4741'
 }
 
