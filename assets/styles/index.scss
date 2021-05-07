@@ -56,6 +56,13 @@ input[type=checkbox] {
   margin: 5px 3px 0px 3px;
 }
 
+.task-post-outline-read {
+  background-color:	#feff9c;
+  // height: 375px;
+  margin: 15px;
+  padding: 15px;
+}
+
 // .task-post-outline-description {
 //   font-size: 25px;
 // }
@@ -80,13 +87,6 @@ input[type=checkbox] {
 
 #message {
   text-align: center;
-}
-
-#task-post-outline-read {
-  background-color:	#feff9c;
-  // height: 375px;
-  margin: 15px;
-  padding: 15px;
 }
 
 // @media (min-width: 768px) {
