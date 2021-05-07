@@ -26,7 +26,7 @@
               <div class="modal-content">
                 <form id="create-task-form">
                   <div class="modal-header">
-                    <input name="task[title]" type="text" class="form-control" placeholder="Task title" tabindex="1" required autofocus>
+                    <input name="task[title]" type="text" class="form-control" placeholder="Task title" tabindex="1" id="create-title-input" required autofocus>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" tabindex="5">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -107,7 +107,7 @@
       </div>
     </div>
   </div>
-  <div class="row row-eq-height d-flex justify-content-around" style="margin-left: 15px" id="task-collection">
+  <div id="task-collection" class="row row-eq-height d-flex justify-content-around">
     <!-- appended task from response goes in here via jQuery -->
     <!-- appended updated task from response goes in here via jQuery -->
   </div>

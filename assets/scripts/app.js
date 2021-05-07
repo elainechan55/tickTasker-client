@@ -18,4 +18,7 @@ $(() => {
   $('#change-password').on('submit', authEvents.onChangePassword)
   $('#sign-out').on('click', authEvents.onSignOut)
   $('#create-task-form').on('submit', taskEvents.onCreateTask)
+  $('#create-task-modal').on('shown.bs.modal', function () {
+    $('#create-title-input').focus()
+  })
 })
