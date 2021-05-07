@@ -31,6 +31,7 @@ const onReadTasks = function () {
       store.tasks.forEach(task => {
         $(`#${task._id}`).on('submit', onUpdateTask)
         $(`#${task._id}-checkbox`).change(onCheckedTask)
+        $(`#${task._id}-deleteButton`).on('click', onDeleteTask)
       })
     })
     .catch(ui.onError)
@@ -65,8 +66,12 @@ const onCheckedTask = function (event) {
 const onDeleteTask = function (event) {
   event.preventDefault()
 
-  api.deleteTask()
-    .then(ui.onDeleteTaskSuccess)
+  const taskId = event.target.id.split('-')[0]
+
+  api.deleteTask(taskId)
+    .then(function (data) {
+      ui.onDeleteTaskSuccess(taskId)
+    })
     .catch(ui.onError)
 }
 

@@ -37,8 +37,14 @@ const updateTask = function (formData, taskId) {
   })
 }
 
-const deleteTask = function () {
-
+const deleteTask = function (taskId) {
+  return $.ajax({
+    method: 'DELETE',
+    url: config.apiUrl + `/tasks/${taskId}`,
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    }
+  })
 }
 
 module.exports = {

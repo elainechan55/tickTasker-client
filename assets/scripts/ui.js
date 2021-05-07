@@ -64,8 +64,11 @@ const onCreateTaskSuccess = function (response) {
   // show in ui: created task
   // jQuery append HTML based on response of user's tasks to HTML (#task-collection) container
   const htmlString = createTaskHtml(response.task)
-  $('#task-collection').append(htmlString)
+  const updateForm = createUpdateFormHtml(response.task)
+  $('#task-collection').prepend(htmlString + updateForm)
   showAndFadeMessageOn($('#message'), 'Task created successfully!')
+
+  return response
 }
 
 const onReadTasksSuccess = function (response) {
@@ -73,15 +76,8 @@ const onReadTasksSuccess = function (response) {
   // for loop through response.tasks
   // for each task, append html to board
   store.tasks = response.tasks
-  const taskArr = store.tasks
-  // on sign-in, GET tasks for user is called
-  // (for) each existing task a user has, it is used to create a post-it on ui
-  taskArr.forEach(task => {
-    const htmlString = createTaskHtml(task)
-    const updateForm = createUpdateFormHtml(task)
-    // append/inject into task-collection div
-    $('#task-collection').append(htmlString + updateForm)
-  })
+
+  reloadTasksFromStore()
 }
 
 const onUpdateTaskSuccess = function (response) {
@@ -95,19 +91,29 @@ const onUpdateTaskSuccess = function (response) {
 
   $(`#${response.task._id}-checkbox`).checked = response.task.isComplete
 
+  // if (response.task.isComplete) {
+  //   $('#task-collection').append($(`#${response.task._id}-div`))
+  // $(`#${response.task._id}-div`).appendTo($('#task-collection'))
+  // $(`${response.task._id}-div`).insertAfter($('#task-collection:last'))
+  // }
+
   store.tasks.forEach((task, i) => {
     if (task._id === response.task._id) {
       store.tasks[i] = response.task
     }
   })
+
+  reloadTasksFromStore()
+
   $(`#update-task-modal-${response.task._id}`).modal('hide')
   showAndFadeMessageOn($('#message'), 'Task updated successfully!')
 }
 
-const onDeleteTaskSuccess = function (response) {
-  console.log('Response is' + response)
+const onDeleteTaskSuccess = function (taskId) {
+  // console.log('Response is' + response)
   console.log('Task deleted successfully!')
   showAndFadeMessageOn($('#message'), 'Task deleted successfully!')
+  $(`#${taskId}-div`).remove()
 }
 
 // =============================================================================
@@ -136,7 +142,7 @@ function createTaskHtml (task) {
   }
   // This is the created post-it on the board (every created one)
   // using html ids to map to back-end task IDs making updates possible
-  return `<div class="col-sm-12 col-md-3 col-lg-3" id="task-post-outline-read">
+  return `<div class="col-sm-12 col-md-3 col-lg-3 task-post-outline-read" id="${task._id}-div">
     <div>
       <p class="text-center task-post-outline-title" id="${task._id}-title">${task.title}</p>
     </div>
@@ -150,7 +156,7 @@ function createTaskHtml (task) {
     </div>
     <div>
       <div>
-        <button type="button" class="btn btn-primary float-right delete-task-button">
+        <button type="button" class="btn btn-primary float-right delete-task-button" id="${task._id}-deleteButton">
           Delete task
         </button>
       </div>
@@ -171,7 +177,7 @@ function createUpdateFormHtml (task) {
         <!--to update specific task-->
         <form id="${task._id}">
           <div class="modal-header">
-            <input name="task[title]" type="text" class="form-control create-update-title" value='${task.title}' required>
+            <input name="task[title]" type="text" class="form-control create-update-title" value='${task.title}' autofocus required>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -187,6 +193,38 @@ function createUpdateFormHtml (task) {
       </div>
     </div>
   </div>`
+}
+
+function reloadTasksFromStore () {
+  // $('#task-collection').empty()
+  const completedTasks = store.tasks.filter(task => task.isComplete)
+  const uncompletedTasks = store.tasks.filter(task => !task.isComplete)
+
+  uncompletedTasks.forEach(task => {
+    const taskDiv = $(`#${task._id}-div`)
+
+    if (taskDiv.length) {
+      $('#task-collection').prepend(taskDiv)
+    } else {
+      const htmlString = createTaskHtml(task)
+      const updateForm = createUpdateFormHtml(task)
+      // append/inject into task-collection div
+      $('#task-collection').prepend(htmlString + updateForm)
+    }
+  })
+
+  completedTasks.forEach(task => {
+    const taskDiv = $(`#${task._id}-div`)
+
+    if (taskDiv.length) {
+      $('#task-collection').append(taskDiv)
+    } else {
+      const htmlString = createTaskHtml(task)
+      const updateForm = createUpdateFormHtml(task)
+      // append/inject into task-collection div
+      $('#task-collection').append(htmlString + updateForm)
+    }
+  })
 }
 
 module.exports = {
