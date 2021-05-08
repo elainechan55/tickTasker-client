@@ -43,8 +43,6 @@ const onUpdateTask = function (event) {
   const form = event.target
   const formData = getFormFields(form)
 
-  formData.task.isComplete = false
-
   api.updateTask(formData, form.id)
     .then(ui.onUpdateTaskSuccess)
     .catch(ui.onError)
