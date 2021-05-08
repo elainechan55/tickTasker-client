@@ -36,7 +36,6 @@ const onChangePasswordSuccess = function () {
 }
 
 const onSignOutSuccess = function () {
-  console.log('Sign out successful!')
   store.user = null
   $('.initial-forms').show()
   $('#create-task-button').hide()
@@ -71,9 +70,6 @@ const onReadTasksSuccess = function (response) {
 }
 
 const onUpdateTaskSuccess = function (response) {
-  // console.log(response.task._id)
-  // console.log(response)
-
   // update from modal response to post-it
   $(`#${response.task._id}-title`).text(response.task.title)
   $(`#${response.task._id}-description`).text(response.task.description)
@@ -82,12 +78,9 @@ const onUpdateTaskSuccess = function (response) {
 
   store.tasks.forEach((task, i) => {
     if (task._id === response.task._id) {
-      console.log('inside forEach')
       store.tasks[i] = response.task
     }
   })
-
-  console.log('reloading tasks...')
   reloadTasksFromStore()
 
   $(`#update-task-modal-${response.task._id}`).modal('hide')
