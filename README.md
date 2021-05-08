@@ -1,9 +1,13 @@
 # Tick Tasker
 A user-based site for creating and updating tasks that can be 'ticked' off when
-completed. This application utilizes Express API web framework and AJAX API calls
-to view and track user accounts and share tasks with other users.
+completed. This application utilizes Bootstrap, HTML with SCSS and Javascript,
+and AJAX API calls to the [TickTasker Server](https://github.com/elainechan55/tickTasker-server)
+to view and track user tasks.
 
 ## Important Links
+* [Other Repository](https://github.com/elainechan55/tickTasker-server)
+* [Deployed API](https://tick-tasker.herokuapp.com/)
+* [Deployed Client](https://elainechan55.github.io/tickTasker-client)
 
 
 ## Planning
@@ -40,13 +44,10 @@ STRETCH GOALS:
   can 'tick' a task checkbox of mine (if permitted).
 
 ### Technologies Used
-- jQuery
-- HTML/CSS
+- jQuery/AJAX
+- HTML/SCSS
 - Bootstrap
 - Javascript
 
 ### Wireframes
 ![TickTasker Wireframe](/assets/images/tickTaskerWireframe.jpg)
-
-### Entity Relationship Diagram
-![TickTasker Entity Relationship Diagram](/assets/images/tickTaskerERD.jpg)
