@@ -5,22 +5,16 @@ const store = require('./store')
 // =============================================================================
 // UI for authentication events (Sign-up, sign-in, change pw, sign-out)
 const onSignUpSuccess = function () {
-  console.log('Sign up successful!')
-  // $('#sign-up-message').text('Sign up successful!')
-  // $('#sign-up-message').show()
-  // $('#sign-up-message').delay(3500).fadeOut()
   showAndFadeMessageOn($('#sign-up-message'), 'Sign up successful!')
   $('#sign-up').trigger('reset')
 }
 
 const onSignUpError = function () {
-  console.log('There was an error in sign-up')
-  $('#sign-up-message').text('There was an error, please try again.')
+  showAndFadeMessageOn($('#sign-up-message'), 'There was an error, please try again.')
 }
 
 const onSignInSuccess = function (response) {
   store.user = response.user
-  console.log('Sign in successful!')
   showAndFadeMessageOn($('#message'), 'Sign in successful!')
   $('#sign-in').trigger('reset')
   $('.initial-forms').hide()
@@ -36,7 +30,6 @@ const onChangePasswordClick = function () {
 }
 
 const onChangePasswordSuccess = function () {
-  console.log('Password change successful!')
   showAndFadeMessageOn($('#message'), 'Password change successful!')
   $('#change-password').trigger('reset')
   $('#change-password').hide()
@@ -55,8 +48,6 @@ const onSignOutSuccess = function () {
 // =============================================================================
 // UI for task events (create task, read (INDEX) task, update task, delete task)
 const onCreateTaskSuccess = function (response) {
-  console.log('Response is ' + response)
-  console.log('Task created successfully!')
   // push response.task to store.tasks
   store.tasks.push(response.task)
   $('#create-task-form').trigger('reset')
@@ -72,7 +63,6 @@ const onCreateTaskSuccess = function (response) {
 }
 
 const onReadTasksSuccess = function (response) {
-  console.log(response)
   // for loop through response.tasks
   // for each task, append html to board
   store.tasks = response.tasks
@@ -81,21 +71,14 @@ const onReadTasksSuccess = function (response) {
 }
 
 const onUpdateTaskSuccess = function (response) {
-  console.log(response.task._id)
-  console.log(response)
-  console.log('Task updated successfully!')
+  // console.log(response.task._id)
+  // console.log(response)
 
   // update from modal response to post-it
   $(`#${response.task._id}-title`).text(response.task.title)
   $(`#${response.task._id}-description`).text(response.task.description)
 
   $(`#${response.task._id}-checkbox`).checked = response.task.isComplete
-
-  // if (response.task.isComplete) {
-  //   $('#task-collection').append($(`#${response.task._id}-div`))
-  // $(`#${response.task._id}-div`).appendTo($('#task-collection'))
-  // $(`${response.task._id}-div`).insertAfter($('#task-collection:last'))
-  // }
 
   store.tasks.forEach((task, i) => {
     if (task._id === response.task._id) {
@@ -110,8 +93,6 @@ const onUpdateTaskSuccess = function (response) {
 }
 
 const onDeleteTaskSuccess = function (taskId) {
-  // console.log('Response is' + response)
-  console.log('Task deleted successfully!')
   showAndFadeMessageOn($('#message'), 'Task deleted successfully!')
   $(`#${taskId}-div`).remove()
 }
@@ -119,7 +100,6 @@ const onDeleteTaskSuccess = function (taskId) {
 // =============================================================================
 // UI for error
 const onError = function (response) {
-  console.log('there was an error')
   $('#message').text('There was an error, please try again.')
 }
 
@@ -134,7 +114,6 @@ function showAndFadeMessageOn (jQueryObject, message) {
 
 // function to create a task with HTML and insert with responses
 function createTaskHtml (task) {
-  console.log('')
   let checked = ''
   // if task.isComplete = true, add 'checked' to checkbox-HTML-element
   if (task.isComplete) {
