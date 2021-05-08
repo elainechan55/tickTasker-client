@@ -50,4 +50,4 @@ STRETCH GOALS:
 - Javascript
 
 ### Wireframes
-![TickTasker Wireframe](/assets/images/tickTaskerWireframe.jpg)
+![TickTasker Wireframe](/public/images/tickTaskerWireframe.jpg)
