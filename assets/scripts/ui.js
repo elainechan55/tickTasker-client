@@ -82,10 +82,12 @@ const onUpdateTaskSuccess = function (response) {
 
   store.tasks.forEach((task, i) => {
     if (task._id === response.task._id) {
+      console.log('inside forEach')
       store.tasks[i] = response.task
     }
   })
 
+  console.log('reloading tasks...')
   reloadTasksFromStore()
 
   $(`#update-task-modal-${response.task._id}`).modal('hide')
@@ -93,6 +95,12 @@ const onUpdateTaskSuccess = function (response) {
 }
 
 const onDeleteTaskSuccess = function (taskId) {
+  store.tasks.forEach((task, i) => {
+    if (task._id === taskId) {
+      store.tasks.splice(i, 1)
+    }
+  })
+
   showAndFadeMessageOn($('#message'), 'Task deleted successfully!')
   $(`#${taskId}-div`).remove()
 }
