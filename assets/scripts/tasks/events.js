@@ -18,6 +18,7 @@ const onCreateTask = function (event) {
       // for every task, set event listener for checkbox -> update
       $(`#${response.task._id}`).on('submit', onUpdateTask)
       $(`#${response.task._id}-checkbox`).change(onCheckedTask)
+      $(`#${response.task._id}-deleteButton`).on('click', onDeleteTask)
     })
     .catch(ui.onError)
 }
