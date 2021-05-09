@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Tick Tasker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap");
+  </style>
+
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-light" style="background-color: #308247;">
+      <h1 class="h1 mb-1 text-light" id="navbar-title">Tick Tasker</h1>
+      <div class="bs-example">
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create-task-modal" id="create-task-button">Create a task</button>
+          <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="createTask" aria-hidden="true" id="create-task-modal">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <form id="create-task-form">
+                  <div class="modal-header">
+                    <input name="task[title]" type="text" class="form-control" placeholder="Task title" tabindex="1" id="create-title-input" required autofocus>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" tabindex="5">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <input name="task[description]" type="text" class="form-control" placeholder="Task description" tabindex="2" required>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" tabindex="4">Close</button>
+                    <button type="submit" class="btn btn-primary" tabindex="3">Save changes</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="btn-group" id="settings">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Settings
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+              <button class="dropdown-item menu-change-password">Change Password</button>
+              <form class="dropdown-menu dropdown-menu-right p-4" id="change-password">
+                <div class="form-group">
+                  <input name="passwords[old]" type="password" class="form-control" id="oldPassword" placeholder="Enter old password">
+                </div>
+                <div class="form-group">
+                  <input name="passwords[new]" type="password" class="form-control" id="newPassword" placeholder="Enter new password">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Change Password</button>
+              </form>
+              <!-- <a class="dropdown-item">View Household</a> -->
+              <button class="dropdown-item" id="sign-out">Sign Out</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <p class="white-text-cork-background" id="message"></p>
+
+  <div class="initial-forms">
+    <form class="form-signin text-center" id="sign-in">
+      <img class="mb-4" src="public/images/tickTaskerIcon.png" alt="Tick Tasker Icon" width="300" height="300">
+      <h1 class="h3 mb-3 font-weight-normal white-text-cork-background">Please sign in</h1>
+      <input name="credentials[email]" type="email" class="form-control" placeholder="Email address" required>
+      <input name="credentials[password]" type="password" class="form-control" placeholder="Password" required>
+      <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+      <div class="mt-3">
+        <div class="white-text-cork-background">
+          Not a user?
+          <a href="#" data-toggle="modal" data-target="#sign-up-modal" class="ml-2 white-text-cork-background">Sign Up</a>
+        </div>
+      </div>
+    </form>
+    <div id="sign-up-modal" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Please sign up</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form id="sign-up">
+            <div class="modal-body">
+              <input name="credentials[email]" type="email" class="form-control" placeholder="Email address" required>
+              <input name="credentials[password]" type="password" class="form-control" placeholder="Password" required>
+              <input name="credentials[password_confirmation]" type="password" class="form-control" placeholder="Confirm password" required>
+            </div>
+            <div class="modal-footer">
+              <p id="sign-up-message"></p>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Sign up</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="task-collection" class="row row-eq-height d-flex justify-content-around">
+    <!-- appended task from response goes in here via jQuery -->
+    <!-- appended updated task from response goes in here via jQuery -->
+  </div>
+
+</body>
+
+</html>
